@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const hbs = require("hbs");
 const app = express();
@@ -7,7 +8,6 @@ const routes = require("./routes/main");
 const Detail = require("./models/Detail");
 const Slider = require("./models/Slider");
 const Servics = require("./models/Servics");
-const { request } = require("express");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/static", express.static("public"));
@@ -19,7 +19,7 @@ app.set("views", "views");
 hbs.registerPartials("views/partials");
 
 //db connection
-mongoose.connect("mongodb+srv://Paras-Admin:Admin%40Paras@cluster0.vxdnfqa.mongodb.net/ItSolution?retryWrites=true&w=majority", () => {
+mongoose.connect(process.env.MONGOURI, () => {
   console.log("Database connected");
 
   // Servics.create(
@@ -66,8 +66,8 @@ mongoose.connect("mongodb+srv://Paras-Admin:Admin%40Paras@cluster0.vxdnfqa.mongo
   // ]);
 
   // Detail.create({
-  //   brandName: "WebsiteName",
-  //   brandIconUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToGGvDxkPArT8mDgzcziQn30blnyEY_REmrg&usqp=CAU",
+  //   brandName: "Direct It Solutions",
+  //   brandIconUrl: "/static/images/DSol-crop.png",
   //   links: [
   //     {
   //       label: "Home",
@@ -96,5 +96,3 @@ mongoose.connect("mongodb+srv://Paras-Admin:Admin%40Paras@cluster0.vxdnfqa.mongo
 app.listen(3000, () => {
   console.log("Server started on port 3000");
 });
-
-

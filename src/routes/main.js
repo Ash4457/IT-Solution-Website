@@ -10,11 +10,11 @@ const Service = require("../models/Servics");
 const routes = express.Router();
 
 routes.get("/", async (req, res) => {
-  const details = await Detail.findOne({ _id: "642015aa9faefbb9567e90a9" });
+  const details = await Detail.findOne();
   const slides = await Slider.find();
   const services = await Service.find();
 
-  console.log(slides);
+  console.log(details);
 
   res.render("index", {
     details: details,
