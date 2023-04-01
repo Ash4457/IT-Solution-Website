@@ -16,5 +16,5 @@ Easy to customize and deploy
 - Start the server:
 `npm start`
 
-##🤝 Contributing
+## 🤝 Contributing
 Contributions, issues, and feature requests are welcome!
